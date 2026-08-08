@@ -1,0 +1,666 @@
+$date
+	Fri Aug  7 10:21:05 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_spi_directed $end
+$var wire 1 ! ss_n $end
+$var wire 1 " sclk $end
+$var wire 8 # rx_data [7:0] $end
+$var wire 1 $ mosi $end
+$var wire 1 % done $end
+$var wire 1 & busy $end
+$var reg 1 ' clk $end
+$var reg 8 ( clkdiv_val [7:0] $end
+$var reg 1 ) cpha $end
+$var reg 1 * cpol $end
+$var reg 1 + lsb_first $end
+$var reg 1 , miso $end
+$var reg 8 - miso_pattern [7:0] $end
+$var reg 1 . rst_n $end
+$var reg 1 / start $end
+$var reg 8 0 tx_data [7:0] $end
+$var integer 32 1 miso_idx [31:0] $end
+$scope module dut $end
+$var wire 1 ' clk $end
+$var wire 8 2 clkdiv_val [7:0] $end
+$var wire 1 ) cpha $end
+$var wire 1 * cpol $end
+$var wire 1 + lsb_first $end
+$var wire 1 , miso $end
+$var wire 1 . rst_n $end
+$var wire 1 / start $end
+$var wire 8 3 tx_data [7:0] $end
+$var wire 1 ! ss_n $end
+$var wire 1 4 shift $end
+$var wire 1 5 sclk_en $end
+$var wire 1 " sclk $end
+$var wire 8 6 rx_data [7:0] $end
+$var wire 1 $ mosi $end
+$var wire 1 7 load $end
+$var wire 1 % done $end
+$var wire 1 & busy $end
+$scope module u_clkdiv $end
+$var wire 1 ' clk $end
+$var wire 8 8 div [7:0] $end
+$var wire 1 . rst_n $end
+$var wire 1 & enable $end
+$var reg 8 9 count [7:0] $end
+$var reg 1 5 sclk_en $end
+$upscope $end
+$scope module u_fsm $end
+$var wire 1 ' clk $end
+$var wire 1 ) cpha $end
+$var wire 1 * cpol $end
+$var wire 1 . rst_n $end
+$var wire 1 5 sclk_en $end
+$var wire 1 / start $end
+$var parameter 3 : DONE_ST $end
+$var parameter 3 ; IDLE $end
+$var parameter 3 < LOAD $end
+$var parameter 3 = SCLK_HIGH $end
+$var parameter 3 > SCLK_LOW $end
+$var parameter 3 ? SS_HOLD $end
+$var parameter 3 @ SS_SETUP $end
+$var reg 4 A bit_count [3:0] $end
+$var reg 1 & busy $end
+$var reg 1 % done $end
+$var reg 1 7 load $end
+$var reg 3 B next_state [2:0] $end
+$var reg 1 " sclk $end
+$var reg 1 4 shift $end
+$var reg 1 ! ss_n $end
+$var reg 3 C state [2:0] $end
+$upscope $end
+$scope module u_shreg $end
+$var wire 1 ' clk $end
+$var wire 1 7 load $end
+$var wire 1 + lsb_first $end
+$var wire 1 , miso_bit_in $end
+$var wire 1 . rst_n $end
+$var wire 8 D rx_data [7:0] $end
+$var wire 1 4 shift $end
+$var wire 8 E tx_data [7:0] $end
+$var wire 1 $ mosi_bit_out $end
+$var reg 8 F shreg [7:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10 @
+b101 ?
+b11 >
+b100 =
+b1 <
+b0 ;
+b110 :
+$end
+#0
+$dumpvars
+b0 F
+b0 E
+b0 D
+b0 C
+b0 B
+b0 A
+b0 9
+b10 8
+07
+b0 6
+05
+04
+b0 3
+b10 2
+b111 1
+b0 0
+0/
+0.
+b11000011 -
+0,
+0+
+0*
+0)
+b10 (
+0'
+0&
+0%
+0$
+b0 #
+0"
+1!
+$end
+#5000
+1'
+#10000
+0'
+#15000
+1'
+#20000
+0'
+1.
+#25000
+1'
+#30000
+b1 B
+1/
+0'
+b10100101 0
+b10100101 3
+b10100101 E
+#35000
+1&
+17
+b10 B
+b1 C
+1'
+#40000
+b10 B
+1,
+0/
+0'
+#45000
+1$
+0!
+07
+b10100101 #
+b10100101 6
+b10100101 D
+b10100101 F
+b10 C
+b1 9
+1'
+#50000
+0'
+#55000
+b10 9
+1'
+#60000
+0'
+#65000
+b100 B
+15
+b0 9
+1'
+#70000
+0'
+#75000
+1"
+05
+b1 9
+b100 C
+1'
+#80000
+0'
+#85000
+b10 9
+1'
+#90000
+0'
+#95000
+b11 B
+15
+b0 9
+1'
+#100000
+0'
+#105000
+0"
+b11 C
+05
+b1 9
+1'
+#110000
+0'
+#115000
+b10 9
+1'
+#120000
+0'
+#125000
+14
+b100 B
+15
+b0 9
+1'
+#130000
+0'
+#135000
+0$
+1"
+04
+05
+b1 9
+b100 C
+b1 A
+b1001011 #
+b1001011 6
+b1001011 D
+b1001011 F
+1'
+#140000
+0'
+#145000
+b10 9
+1'
+#150000
+0'
+#155000
+b11 B
+15
+b0 9
+1'
+#160000
+0'
+#165000
+0"
+b11 C
+05
+b1 9
+1'
+#170000
+0'
+#175000
+b10 9
+1'
+#180000
+0'
+#185000
+14
+b100 B
+15
+b0 9
+1'
+#190000
+0'
+#195000
+1$
+1"
+04
+05
+b1 9
+b100 C
+b10 A
+b10010111 #
+b10010111 6
+b10010111 D
+b10010111 F
+1'
+#200000
+0'
+#205000
+b10 9
+1'
+#210000
+0'
+#215000
+b11 B
+15
+b0 9
+1'
+#220000
+0'
+#225000
+0"
+b11 C
+05
+b1 9
+1'
+#230000
+0'
+#235000
+b10 9
+1'
+#240000
+0'
+#245000
+14
+b100 B
+15
+b0 9
+1'
+#250000
+0'
+#255000
+0$
+1"
+04
+05
+b1 9
+b100 C
+b11 A
+b101111 #
+b101111 6
+b101111 D
+b101111 F
+1'
+#260000
+0'
+#265000
+b10 9
+1'
+#270000
+0'
+#275000
+b11 B
+15
+b0 9
+1'
+#280000
+0'
+#285000
+0"
+b11 C
+05
+b1 9
+1'
+#290000
+0'
+#295000
+b10 9
+1'
+#300000
+0'
+#305000
+14
+b100 B
+15
+b0 9
+1'
+#310000
+0'
+#315000
+1"
+04
+05
+b1 9
+b100 C
+b100 A
+b1011111 #
+b1011111 6
+b1011111 D
+b1011111 F
+1'
+#320000
+0'
+#325000
+b10 9
+1'
+#330000
+0'
+#335000
+b11 B
+15
+b0 9
+1'
+#340000
+0'
+#345000
+0"
+b11 C
+05
+b1 9
+1'
+#350000
+0'
+#355000
+b10 9
+1'
+#360000
+0'
+#365000
+14
+b100 B
+15
+b0 9
+1'
+#370000
+0'
+#375000
+1$
+1"
+04
+05
+b1 9
+b100 C
+b101 A
+b10111111 #
+b10111111 6
+b10111111 D
+b10111111 F
+1'
+#380000
+0'
+#385000
+b10 9
+1'
+#390000
+0'
+#395000
+b11 B
+15
+b0 9
+1'
+#400000
+0'
+#405000
+0"
+b11 C
+05
+b1 9
+1'
+#410000
+0'
+#415000
+b10 9
+1'
+#420000
+0'
+#425000
+14
+b100 B
+15
+b0 9
+1'
+#430000
+0'
+#435000
+0$
+1"
+04
+05
+b1 9
+b100 C
+b110 A
+b1111111 #
+b1111111 6
+b1111111 D
+b1111111 F
+1'
+#440000
+0'
+#445000
+b10 9
+1'
+#450000
+0'
+#455000
+b11 B
+15
+b0 9
+1'
+#460000
+0'
+#465000
+0"
+b11 C
+05
+b1 9
+1'
+#470000
+0'
+#475000
+b10 9
+1'
+#480000
+0'
+#485000
+14
+b100 B
+15
+b0 9
+1'
+#490000
+0'
+#495000
+1$
+1"
+04
+05
+b1 9
+b100 C
+b111 A
+b11111111 #
+b11111111 6
+b11111111 D
+b11111111 F
+1'
+#500000
+0'
+#505000
+b10 9
+1'
+#510000
+0'
+#515000
+b11 B
+15
+b0 9
+1'
+#520000
+0'
+#525000
+0"
+b11 C
+05
+b1 9
+1'
+#530000
+0'
+#535000
+b10 9
+1'
+#540000
+0'
+#545000
+14
+b100 B
+15
+b0 9
+1'
+#550000
+0'
+#555000
+1"
+04
+05
+b1 9
+b100 C
+b1000 A
+1'
+#560000
+0'
+#565000
+b10 9
+1'
+#570000
+0'
+#575000
+b11 B
+15
+b0 9
+1'
+#580000
+0'
+#585000
+0"
+b11 C
+05
+b1 9
+1'
+#590000
+0'
+#595000
+b10 9
+1'
+#600000
+0'
+#605000
+14
+b101 B
+15
+b0 9
+1'
+#610000
+0'
+#615000
+04
+05
+b1 9
+b101 C
+b1001 A
+1'
+#620000
+0'
+#625000
+b10 9
+1'
+#630000
+0'
+#635000
+b110 B
+15
+b0 9
+1'
+#640000
+0'
+#645000
+1!
+1%
+b0 B
+b110 C
+05
+b1 9
+1'
+#650000
+0'
+#655000
+0%
+0&
+b10 9
+b0 C
+1'
+#660000
+0'
+#665000
+b0 9
+1'
+#670000
+0'
+#675000
+1'
+#680000
+0'
+#685000
+1'
+#690000
+0'
+#695000
+1'
+#700000
+0'
