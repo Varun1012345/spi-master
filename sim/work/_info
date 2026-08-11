@@ -8,9 +8,9 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dD:/spi-master/spi-master/sim
+Z0 dD:/spi-master/sim
 vspi_clkdiv
-Z1 !s110 1786210079
+Z1 !s110 1786440094
 !i10b 1
 !s100 E2Old_z?W<hHMB?L=>QS_0
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -20,19 +20,19 @@ R0
 Z4 w1786100013
 8../rtl/spi_clkdiv.v
 F../rtl/spi_clkdiv.v
-!i122 37
+!i122 6
 L0 6 27
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1786210079.000000
+Z6 !s108 1786440094.000000
 !s107 ../rtl/spi_clkdiv.v|
 !s90 -reportprogress|300|../rtl/spi_clkdiv.v|
 !i113 1
 Z7 tCvgOpt 0
 vspi_ctrl_fsm
-Z8 !s110 1786210080
+R1
 !i10b 1
 !s100 Q^O_NjgaSLILZKaE;>>I_0
 R2
@@ -42,7 +42,7 @@ R0
 w1786186991
 8../rtl/spi_ctrl_fsm.v
 F../rtl/spi_ctrl_fsm.v
-!i122 39
+!i122 8
 L0 20 83
 R5
 r1
@@ -53,8 +53,30 @@ R6
 !s90 -reportprogress|300|../rtl/spi_ctrl_fsm.v|
 !i113 1
 R7
+vspi_master_regbus_top
+Z8 !s110 1786440841
+!i10b 1
+!s100 @gOZRVm3zXY=V[P_eCziY3
+R2
+I0mGWD@]LD;aZ?HOYV?`bS0
+R3
+R0
+w1786440739
+8../rtl/spi_master_regbus_top.v
+F../rtl/spi_master_regbus_top.v
+!i122 22
+L0 4 72
+R5
+r1
+!s85 0
+31
+Z9 !s108 1786440841.000000
+!s107 ../tb/tb_regbus.v|../rtl/spi_master_regbus_top.v|../rtl/spi_regfile.v|
+Z10 !s90 -reportprogress|300|../rtl/spi_regfile.v|../rtl/spi_master_regbus_top.v|../tb/tb_regbus.v|
+!i113 1
+R7
 vspi_master_top
-R8
+R1
 !i10b 1
 !s100 `coZJRe<>ZgiA;97Z[XIA0
 R2
@@ -64,15 +86,37 @@ R0
 R4
 8../rtl/spi_master_top.v
 F../rtl/spi_master_top.v
-!i122 40
+!i122 9
 L0 6 60
 R5
 r1
 !s85 0
 31
-Z9 !s108 1786210080.000000
+R6
 !s107 ../rtl/spi_master_top.v|
 !s90 -reportprogress|300|../rtl/spi_master_top.v|
+!i113 1
+R7
+vspi_regfile
+R8
+!i10b 1
+!s100 a;3X`T6o4Im41GA0@ARm]1
+R2
+Ii3fj@W_]WO91:Me3^JQGG3
+R3
+R0
+w1786440691
+8../rtl/spi_regfile.v
+F../rtl/spi_regfile.v
+!i122 22
+L0 11 82
+R5
+r1
+!s85 0
+31
+R9
+Z11 !s107 ../tb/tb_regbus.v|../rtl/spi_master_regbus_top.v|../rtl/spi_regfile.v|
+R10
 !i113 1
 R7
 vspi_shift_reg
@@ -86,7 +130,7 @@ R0
 R4
 8../rtl/spi_shift_reg.v
 F../rtl/spi_shift_reg.v
-!i122 38
+!i122 7
 L0 7 32
 R5
 r1
@@ -98,7 +142,7 @@ R6
 !i113 1
 R7
 vtb_clkdiv
-R8
+R1
 !i10b 1
 !s100 <LRE:0SeTfa0Q>g>lc>R`2
 R2
@@ -108,19 +152,41 @@ R0
 R4
 8../tb/tb_clkdiv.v
 F../tb/tb_clkdiv.v
-!i122 41
+!i122 10
 L0 7 49
 R5
 r1
 !s85 0
 31
-R9
+R6
 !s107 ../tb/tb_clkdiv.v|
 !s90 -reportprogress|300|../tb/tb_clkdiv.v|
 !i113 1
 R7
-vtb_shift_reg
+vtb_regbus
 R8
+!i10b 1
+!s100 GEe^J99ghIDTXcLda^WF_2
+R2
+IUzXY8Pa1S8bW35I7C;CBK3
+R3
+R0
+w1786440820
+8../tb/tb_regbus.v
+F../tb/tb_regbus.v
+!i122 22
+L0 8 156
+R5
+r1
+!s85 0
+31
+R9
+R11
+R10
+!i113 1
+R7
+vtb_shift_reg
+Z12 !s110 1786440095
 !i10b 1
 !s100 43A_1iBXdFcnSb:KPO30o2
 R2
@@ -130,41 +196,41 @@ R0
 R4
 8../tb/tb_shift_reg.v
 F../tb/tb_shift_reg.v
-!i122 42
+!i122 11
 L0 7 75
 R5
 r1
 !s85 0
 31
-R9
+Z13 !s108 1786440095.000000
 !s107 ../tb/tb_shift_reg.v|
 !s90 -reportprogress|300|../tb/tb_shift_reg.v|
 !i113 1
 R7
 vtb_spi_directed
-R8
+!s110 1786440224
 !i10b 1
-!s100 kdQ>@jzeooK8=_Y[gmi@d0
+!s100 YMGMN076i<0gnBO3ehQXj3
 R2
-ITXJB>WoAGgE8LLf3jR6oG0
+IVFSn9B@jCzz0z295QSBbQ3
 R3
 R0
-w1786187059
+w1786440064
 8../tb/tb_spi_directed.v
 F../tb/tb_spi_directed.v
-!i122 43
-L0 10 98
+!i122 17
+L0 9 99
 R5
 r1
 !s85 0
 31
-R9
+!s108 1786440224.000000
 !s107 ../tb/tb_spi_directed.v|
 !s90 -reportprogress|300|../tb/tb_spi_directed.v|
 !i113 1
 R7
 vtb_spi_lsb_first
-Z10 !s110 1786210081
+R12
 !i10b 1
 !s100 O<04GJQW`:E5ST2Hl3UQE2
 R2
@@ -174,19 +240,19 @@ R0
 w1786209888
 8../tb/tb_spi_lsb_first.v
 F../tb/tb_spi_lsb_first.v
-!i122 47
+!i122 16
 L0 10 86
 R5
 r1
 !s85 0
 31
-Z11 !s108 1786210081.000000
+R13
 !s107 ../tb/tb_spi_lsb_first.v|
 !s90 -reportprogress|300|../tb/tb_spi_lsb_first.v|
 !i113 1
 R7
 vtb_spi_mode1
-R8
+!s110 1786440354
 !i10b 1
 !s100 eQf@[zGlb^[1X5gETRknD1
 R2
@@ -196,19 +262,19 @@ R0
 w1786185832
 8../tb/tb_spi_mode1.v
 F../tb/tb_spi_mode1.v
-!i122 44
-Z12 L0 9 82
+!i122 18
+Z14 L0 9 82
 R5
 r1
 !s85 0
 31
-R9
+!s108 1786440353.000000
 !s107 ../tb/tb_spi_mode1.v|
 !s90 -reportprogress|300|../tb/tb_spi_mode1.v|
 !i113 1
 R7
 vtb_spi_mode2
-R8
+!s110 1786440425
 !i10b 1
 !s100 5iQT0643geNhCL^@2K8IF1
 R2
@@ -218,19 +284,19 @@ R0
 w1786185877
 8../tb/tb_spi_mode2.v
 F../tb/tb_spi_mode2.v
-!i122 45
-R12
+!i122 19
+R14
 R5
 r1
 !s85 0
 31
-R9
+!s108 1786440425.000000
 !s107 ../tb/tb_spi_mode2.v|
 !s90 -reportprogress|300|../tb/tb_spi_mode2.v|
 !i113 1
 R7
 vtb_spi_mode3
-R10
+!s110 1786440507
 !i10b 1
 !s100 cKgiNDT76f5Z_B?BDlYfV2
 R2
@@ -240,13 +306,13 @@ R0
 w1786185901
 8../tb/tb_spi_mode3.v
 F../tb/tb_spi_mode3.v
-!i122 46
+!i122 21
 L0 9 83
 R5
 r1
 !s85 0
 31
-R11
+!s108 1786440507.000000
 !s107 ../tb/tb_spi_mode3.v|
 !s90 -reportprogress|300|../tb/tb_spi_mode3.v|
 !i113 1

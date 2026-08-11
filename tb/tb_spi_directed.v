@@ -2,8 +2,7 @@
 // Phase 1 directed tests for spi_master_top, Mode 0 (CPOL=0, CPHA=0).
 // T1: reset behavior
 // T2: basic MOSI transfer (TX_DATA -> check bit sequence via monitor)
-// T3: (Mode 0 only in this version; Modes 1-3 are a Phase 2 extension)
-// T4: MISO capture -> check rx_data after transfer
+// T4: MISO capture -> check rx_data after transfer (bit-accurate)
 
 `timescale 1ns/1ps
 
@@ -42,16 +41,26 @@ module tb_spi_directed;
     initial clk = 0;
     always #5 clk = ~clk;
 
-    // Drive MISO with a known pattern (0xC3 = 1100_0011) whenever we sample
-    // We'll just hold a shift-out pattern in sync loosely with sclk edges for the demo.
     reg [7:0] miso_pattern;
-    integer   miso_idx;
+    reg [3:0] miso_idx;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            miso_idx <= 4'd7;
+            miso     <= 1'b0;
+        end else if (dut.load) begin
+            miso_idx <= 4'd7;
+            miso     <= miso_pattern[7];
+        end else if (dut.shift && miso_idx > 4'd0) begin
+            miso_idx <= miso_idx - 4'd1;
+            miso     <= miso_pattern[miso_idx - 4'd1];
+        end
+    end
 
     initial begin
         $dumpfile("tb_spi_directed.vcd");
         $dumpvars(0, tb_spi_directed);
 
-        // ---- T1: reset behavior ----
         rst_n      = 0;
         start      = 0;
         tx_data    = 8'h00;
@@ -72,35 +81,26 @@ module tb_spi_directed;
         rst_n = 1;
         #10;
 
-        // ---- T2: basic Mode 0 transfer, TX_DATA = 0xA5 ----
         tx_data = 8'hA5;
         @(negedge clk);
         start = 1;
         @(negedge clk);
         start = 0;
 
-        // Drive MISO bit-by-bit on each sclk falling edge (simplified model:
-        // change miso just after each SCLK rising->falling transition so it's
-        // stable before the next rising-edge sample)
-        miso_idx = 7;
-        miso = miso_pattern[miso_idx];
-
-        // Wait for transfer to complete
         wait (done == 1'b1);
         #1;
-        $display("T2 INFO: transfer complete. rx_data = 0x%0h (expect pattern-dependent value)", rx_data);
+        $display("T2 INFO: transfer complete. rx_data = 0x%0h", rx_data);
         $display("T2 PASS: MOSI transfer completed and DONE pulsed (see waveform to confirm bit sequence = 0xA5)");
 
         @(negedge clk);
 
-        // ---- T4: MISO capture check ----
-        // NOTE: this simplified TB does not perfectly time miso changes to each
-        // bit edge (that refinement is a Phase 2 TODO). Treat rx_data result as
-        // informational for now and confirm exact bit alignment visually in GTKWave.
-        $display("T4 INFO: rx_data captured = 0x%0h -- verify against MISO drive in waveform", rx_data);
+        if (rx_data === miso_pattern)
+            $display("T4 PASS: rx_data = 0x%0h matches driven MISO pattern 0x%0h exactly", rx_data, miso_pattern);
+        else
+            $display("T4 FAIL: rx_data = 0x%0h does NOT match expected MISO pattern 0x%0h", rx_data, miso_pattern);
 
         #50;
-        $display("TB_SPI_DIRECTED: run complete. Inspect tb_spi_directed.vcd in GTKWave to confirm SCLK/MOSI/SS_n timing against spec section 5.");
+        $display("TB_SPI_DIRECTED: run complete.");
         $finish;
     end
 
