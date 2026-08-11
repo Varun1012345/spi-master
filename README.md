@@ -56,6 +56,23 @@ Each RTL block also has its own standalone testbench (`tb_clkdiv.v`,
 `tb_shift_reg.v`) confirming correct behavior in isolation before integration
 — this made debugging the top-level FSM much easier.
 
+## Waveforms
+
+**Mode 0 (CPOL=0, CPHA=0) — basic transfer with bit-accurate MISO capture:**
+![Mode 0](waveform/mode0_transfer.png)
+
+**Mode 1 (CPOL=0, CPHA=1) — shift happens on the first/rising edge:**
+![Mode 1](waveform/mode1_transfer.png)
+
+**Mode 2 (CPOL=1, CPHA=0) — SCLK idles high, first edge falling:**
+![Mode 2](waveform/mode2_transfer.png)
+
+**Mode 3 (CPOL=1, CPHA=1) — SCLK idles high, shift on first/falling edge:**
+![Mode 3](waveform/mode3_transfer.png)
+
+**Register bus — full host-driven flow (CTRL/CLKDIV config → TX_DATA write → STATUS poll → RX_DATA read, plus ENABLE gating and SS_SEL multi-slave decode):**
+![Register bus](waveform/regbus_transfer.png)
+
 ## How to run the simulations
 
 ### Option A: ModelSim / QuestaSim (recommended)
