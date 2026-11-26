@@ -120,48 +120,6 @@ do run_all.do
 
 This compiles all RTL and testbenches, runs the standalone, mode and register-bus tests in the console, and opens `tb_spi_directed` in the Wave window with SCLK, SS_n, MOSI, MISO, rx_data, busy and done already added. Compare it with the timing diagram in section 5 of `docs/spi_master_spec.md`.
 
-### Icarus Verilog
-
-```bash
-# Standalone module tests
-iverilog -o sim/tb_clkdiv.vvp rtl/spi_clkdiv.v tb/tb_clkdiv.v
-vvp sim/tb_clkdiv.vvp
-
-iverilog -o sim/tb_shift_reg.vvp rtl/spi_shift_reg.v tb/tb_shift_reg.v
-vvp sim/tb_shift_reg.vvp
-
-# Top-level directed test (Mode 0, T1/T2/T4)
-iverilog -o sim/tb_spi_directed.vvp rtl/spi_clkdiv.v rtl/spi_shift_reg.v \
-    rtl/spi_ctrl_fsm.v rtl/spi_master_top.v tb/tb_spi_directed.v
-vvp sim/tb_spi_directed.vvp
-
-# Modes 1, 2, 3
-iverilog -o sim/tb_spi_mode1.vvp rtl/spi_clkdiv.v rtl/spi_shift_reg.v \
-    rtl/spi_ctrl_fsm.v rtl/spi_master_top.v tb/tb_spi_mode1.v
-vvp sim/tb_spi_mode1.vvp
-
-iverilog -o sim/tb_spi_mode2.vvp rtl/spi_clkdiv.v rtl/spi_shift_reg.v \
-    rtl/spi_ctrl_fsm.v rtl/spi_master_top.v tb/tb_spi_mode2.v
-vvp sim/tb_spi_mode2.vvp
-
-iverilog -o sim/tb_spi_mode3.vvp rtl/spi_clkdiv.v rtl/spi_shift_reg.v \
-    rtl/spi_ctrl_fsm.v rtl/spi_master_top.v tb/tb_spi_mode3.v
-vvp sim/tb_spi_mode3.vvp
-
-# LSB-first
-iverilog -o sim/tb_spi_lsb_first.vvp rtl/spi_clkdiv.v rtl/spi_shift_reg.v \
-    rtl/spi_ctrl_fsm.v rtl/spi_master_top.v tb/tb_spi_lsb_first.v
-vvp sim/tb_spi_lsb_first.vvp
-
-# Register bus
-iverilog -o sim/tb_regbus.vvp rtl/spi_clkdiv.v rtl/spi_shift_reg.v \
-    rtl/spi_ctrl_fsm.v rtl/spi_master_top.v rtl/spi_regfile.v \
-    rtl/spi_master_regbus_top.v tb/tb_regbus.v
-vvp sim/tb_regbus.vvp
-
-# View waveforms (after running the sims above, .vcd files land in sim/waves/)
-gtkwave sim/waves/tb_spi_directed.vcd
-```
 
 ## Scope and limitations
 
